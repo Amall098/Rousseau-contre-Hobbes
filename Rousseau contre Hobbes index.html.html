@@ -1,0 +1,1186 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rousseau vs Hobbes : Explorer la Philosophie Politique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            min-height: 250px;
+            max-height: 400px;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        .person-node {
+            transition: all 0.3s ease;
+        }
+        .person-node:hover {
+            transform: scale(1.1);
+        }
+        .slider-container {
+            margin-bottom: 1.5rem;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .quote-box {
+            border-left: 4px solid #3b82f6;
+            padding-left: 1rem;
+            font-style: italic;
+            margin: 1rem 0;
+        }
+        .strategy-card {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .strategy-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .strategy-card.selected {
+            ring: 2px; 
+            --tw-ring-color: #2563eb;
+            background-color: #eff6ff;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <header class="mb-8 text-center">
+            <h1 class="text-4xl font-bold text-blue-800 mb-2">Rousseau contre Hobbes</h1>
+            <h2 class="text-2xl text-blue-600 mb-4">Une exploration de la philosophie politique par la simulation</h2>
+            <p class="text-lg mb-6">simuler différentes hypothèses sur la nature humaine et leurs conséquences politiques ?</p>
+        </header>
+
+        <div class="tabs mb-8 overflow-x-auto">
+            <div class="flex border-b border-gray-200 min-w-max">
+                <button class="tab-btn px-6 py-3 font-medium text-blue-600 border-b-2 border-blue-600" data-tab="intro">Introduction</button>
+                <button class="tab-btn px-6 py-3 font-medium text-gray-500 hover:text-blue-600" data-tab="nature">État de Nature</button>
+                <button class="tab-btn px-6 py-3 font-medium text-gray-500 hover:text-blue-600" data-tab="society">Corruption de la Société</button>
+                <button class="tab-btn px-6 py-3 font-medium text-gray-500 hover:text-blue-600" data-tab="hobbes">La Solution de Hobbes</button>
+                <button class="tab-btn px-6 py-3 font-medium text-gray-500 hover:text-blue-600" data-tab="rousseau">L'Alternative de Rousseau</button>
+                <button class="tab-btn px-6 py-3 font-medium text-gray-500 hover:text-blue-600" data-tab="compare">Comparer les Systèmes</button>
+                <button class="tab-btn px-6 py-3 font-medium text-red-600 hover:text-red-800" data-tab="crisis">Étude de Cas : La Crise</button>
+            </div>
+        </div>
+
+        <div class="tab-content active" id="intro">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-2xl font-bold text-blue-700 mb-4">L'erreur de l'horloger</h3>
+                <p class="mb-4">En philosophie politique, peu de débats sont aussi fondamentaux que la nature de l'humanité et la meilleure forme de gouvernement. Thomas Hobbes et Jean-Jacques Rousseau ont présenté des visions radicalement différentes qui continuent d'influencer la pensée politique aujourd'hui.</p>
+                
+                <div class="quote-box bg-blue-50 p-4 rounded">
+                    <p class="mb-2">Hobbes a démonté la montre, mais il s'est trompé sur la nature des pièces</p>
+                    <p class="text-sm text-right">— C'est ce qui semble etre fondamentalement une critique méthodologique acerbe de Rousseau envers Hobbes. Or toute l'architecture hobbesienne est fondée sur sa conception de la nature humaine</p>
+                </div>
+                
+                <p class="mb-4">Rousseau accusait Hobbes de projeter sur l'homme naturel des passions qui sont en fait produites par la société. Là où Hobbes voyait une humanité naturellement violente nécessitant un contrôle absolu, Rousseau voyait une humanité naturellement pacifique corrompue par la société.</p>
+                
+                <p class="mb-4">Cette exploration interactive vous permet de :</p>
+                <ul class="list-disc pl-6 mb-4">
+                    <li>Simuler différentes hypothèses sur la nature humaine</li>
+                    <li>Observer comment la société transforme les individus</li>
+                    <li>Comparer le Léviathan de Hobbes avec le Contrat Social de Rousseau</li>
+                    <li>Explorer le concept de Volonté Générale</li>
+                </ul>
+                
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
+                    <p class="font-bold">Question clé à explorer :</p>
+                    <p>L'humanité est-elle naturellement violente et a-t-elle besoin de contrôle (Hobbes), ou est-elle naturellement pacifique mais corrompue par la société (Rousseau) ?</p>
+                </div>
+                
+                <button class="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition" onclick="switchTab('nature')">Commencer l'exploration</button>
+            </div>
+        </div>
+
+        <div class="tab-content" id="nature">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-2xl font-bold text-blue-700 mb-4">L'État de Nature</h3>
+                <p class="mb-4">Avant l'existence de la société, les humains vivaient dans ce que les philosophes appellent "l'état de nature". Mais à quoi ressemblait vraiment cet état ? Hobbes et Rousseau avaient des visions radicalement différentes.</p>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+                        <h4 class="text-xl font-bold text-red-700 mb-2">La vision de Hobbes</h4>
+                        <p class="mb-2">"La guerre de tous contre tous"</p>
+                        <ul class="list-disc pl-5">
+                            <li>Naturellement violent et compétitif</li>
+                            <li>La vie est "solitaire, indigente, dégoûtante, animale et brève"</li>
+                            <li>Poussé par la peur et le désir de gloire</li>
+                            <li>Aucune moralité naturelle ni pitié</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                        <h4 class="text-xl font-bold text-green-700 mb-2">La vision de Rousseau</h4>
+                        <p class="mb-2">"Indifférence naturelle et paix"</p>
+                        <ul class="list-disc pl-5">
+                            <li>Naturellement pacifique et solitaire</li>
+                            <li>Poussé par l'auto-préservation et la pitié naturelle</li>
+                            <li>Pas de comparaison ou de compétition avec les autres</li>
+                            <li>Innocent, sans moralité ni vice</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h4 class="text-xl font-bold text-blue-700 mb-3">Simulation Interactive : Traits Humains Naturels</h4>
+                <p class="mb-4">Ajustez les curseurs pour explorer différentes hypothèses sur la nature humaine et voir comment elles affectent les résultats sociaux.</p>
+                
+                <div class="slider-container">
+                    <label class="block mb-2 font-medium">Niveau de Violence Naturelle : <span id="violenceValue">50</span>%</label>
+                    <input type="range" id="violenceSlider" min="0" max="100" value="50" class="w-full">
+                </div>
+                
+                <div class="slider-container">
+                    <label class="block mb-2 font-medium">Niveau de Pitié Naturelle : <span id="pityValue">50</span>%</label>
+                    <input type="range" id="pitySlider" min="0" max="100" value="50" class="w-full">
+                </div>
+                
+                <div class="slider-container">
+                    <label class="block mb-2 font-medium">Pulsion d'Auto-préservation : <span id="selfPreservationValue">70</span>%</label>
+                    <input type="range" id="selfPreservationSlider" min="0" max="100" value="70" class="w-full">
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="natureChart"></canvas>
+                </div>
+                
+                <div class="mt-4 p-4 bg-gray-100 rounded-lg">
+                    <h5 class="font-bold mb-2">Résultats de la Simulation :</h5>
+                    <p id="natureResults">Ajustez les curseurs pour voir comment différentes hypothèses sur la nature humaine affectent les résultats sociaux dans l'état de nature.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="society">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-2xl font-bold text-blue-700 mb-4">La Corruption de l'Homme Naturel</h3>
+                <p class="mb-4">Rousseau soutenait que la société transforme la nature humaine de manière fondamentale. La clé pour comprendre cette transformation est la distinction entre deux types d'amour de soi.</p>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                        <h4 class="text-xl font-bold text-green-700 mb-2">Amour de Soi (Naturel)</h4>
+                        <p class="mb-2">Souci biologique pour sa propre préservation</p>
+                        <ul class="list-disc pl-5">
+                            <li>"Je veux manger et ne pas avoir froid"</li>
+                            <li>Présent chez l'homme naturel</li>
+                            <li>Positif et nécessaire à la vie</li>
+                            <li>Ne nécessite pas de comparaison avec les autres</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+                        <h4 class="text-xl font-bold text-red-700 mb-2">Amour-Propre (Social)</h4>
+                        <p class="mb-2">Souci relatif de son statut par rapport aux autres</p>
+                        <ul class="list-disc pl-5">
+                            <li>"Je veux être meilleur que toi, plus riche, plus admiré"</li>
+                            <li>Créé par la société</li>
+                            <li>Source de haine, de jalousie et de guerre</li>
+                            <li>Nécessite la comparaison avec les autres</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="quote-box bg-blue-50 p-4 rounded">
+                    <p>"Ils parlaient de l'homme sauvage et ils peignaient l'homme civil."</p>
+                    <p class="text-sm text-right">— Critique de Rousseau envers Hobbes</p>
+                </div>
+                
+                <h4 class="text-xl font-bold text-blue-700 mb-3">Simulation Interactive : L'Essor de la Société</h4>
+                <p class="mb-4">Ajustez le curseur de complexité de la société pour voir comment le développement social transforme la psychologie humaine.</p>
+                
+                <div class="slider-container">
+                    <label class="block mb-2 font-medium">Complexité de la Société : <span id="societyComplexityValue">0</span>%</label>
+                    <input type="range" id="societyComplexitySlider" min="0" max="100" value="0" class="w-full">
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="societyChart"></canvas>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-6">
+                    <div class="bg-white border border-gray-200 rounded-lg p-4">
+                        <h5 class="font-bold text-lg mb-2">Faible Complexité</h5>
+                        <p>Individus isolés, interaction minimale, la pitié naturelle domine.</p>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-lg p-4">
+                        <h5 class="font-bold text-lg mb-2">Complexité Moyenne</h5>
+                        <p>Liens sociaux émergents, début de la comparaison, motivations mixtes.</p>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-lg p-4">
+                        <h5 class="font-bold text-lg mb-2">Haute Complexité</h5>
+                        <p>Comparaison sociale intense, l'amour-propre domine, compétition et conflit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="hobbes">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-2xl font-bold text-blue-700 mb-4">La Solution de Hobbes : Le Léviathan</h3>
+                <p class="mb-4">Hobbes croyait que l'état naturel de l'humanité est si violent que la seule solution est de créer un pouvoir souverain absolu - le Léviathan - pour contrôler la nature humaine.</p>
+                
+                <div class="quote-box bg-red-50 p-4 rounded">
+                    <p>"Les conventions, sans l'épée, ne sont que des paroles, et n'ont aucune force pour assurer la sécurité d'un homme."</p>
+                    <p class="text-sm text-right">— Thomas Hobbes, Léviathan</p>
+                </div>
+                
+                <h4 class="text-xl font-bold text-blue-700 mb-3">Le Contrat Social selon Hobbes</h4>
+                <p class="mb-4">Dans le système de Hobbes, les individus acceptent d'abandonner leurs droits naturels à un souverain absolu en échange de la sécurité.</p>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h5 class="font-bold mb-2">Ce que les individus abandonnent :</h5>
+                        <ul class="list-disc pl-5">
+                            <li>La liberté naturelle de faire tout ce qu'ils veulent</li>
+                            <li>Le droit de juger le bien et le mal par eux-mêmes</li>
+                            <li>Le pouvoir d'imposer leur propre volonté</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h5 class="font-bold mb-2">Ce que les individus reçoivent :</h5>
+                        <ul class="list-disc pl-5">
+                            <li>La sécurité contre la mort violente</li>
+                            <li>L'ordre et la stabilité</li>
+                            <li>La capacité de poursuivre le commerce et les arts</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h4 class="text-xl font-bold text-blue-700 mb-3">Simulation Interactive : Le Léviathan en Action</h4>
+                <p class="mb-4">Ajustez le niveau de pouvoir souverain pour voir comment il affecte la sécurité et la liberté.</p>
+                
+                <div class="slider-container">
+                    <label class="block mb-2 font-medium">Pouvoir Souverain : <span id="sovereignPowerValue">50</span>%</label>
+                    <input type="range" id="sovereignPowerSlider" min="0" max="100" value="50" class="w-full">
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="hobbesChart"></canvas>
+                </div>
+                
+                <div class="mt-4 p-4 bg-red-50 rounded-lg">
+                    <h5 class="font-bold mb-2">Critique de Rousseau :</h5>
+                    <p>"On vit tranquille aussi dans les cachots ; en est-ce assez pour s'y trouver bien ?" Pour Rousseau, la sécurité sans liberté est de l'esclavage, pas de la politique.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="rousseau">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-2xl font-bold text-blue-700 mb-4">L'Alternative de Rousseau : Le Contrat Social</h3>
+                <p class="mb-4">Rousseau rejetait à la fois l'état de nature (impossible d'y retourner) et le pacte de soumission de Hobbes. Au lieu de cela, il cherchait une troisième voie qui préserve la liberté tout en créant l'ordre.</p>
+                
+                <div class="quote-box bg-green-50 p-4 rounded">
+                    <p>"Trouver une forme d'association qui défende et protège de toute la force commune la personne et les biens de chaque associé, et par laquelle chacun, s'unissant à tous, n'obéisse pourtant qu'à lui-même, et reste aussi libre qu'auparavant."</p>
+                    <p class="text-sm text-right">— Rousseau, Du contrat social</p>
+                </div>
+                
+                <h4 class="text-xl font-bold text-blue-700 mb-3">La Volonté Générale vs La Volonté de Tous</h4>
+                <p class="mb-4">La pierre angulaire du système de Rousseau est le concept de Volonté Générale, qui est fondamentalement différent de la simple somme des intérêts individuels.</p>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+                        <h4 class="text-xl font-bold text-red-700 mb-2">Volonté de Tous</h4>
+                        <p class="mb-2">Une simple addition d'intérêts particuliers</p>
+                        <ul class="list-disc pl-5">
+                            <li>Tout le monde veut des impôts moins élevés</li>
+                            <li>Les intérêts égoïstes dominent</li>
+                            <li>Mène au préjudice collectif si suivi</li>
+                            <li>Comme des joueurs de foot voulant tous marquer eux-mêmes</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                        <h4 class="text-xl font-bold text-green-700 mb-2">Volonté Générale</h4>
+                        <p class="mb-2">L'intérêt commun de la communauté</p>
+                        <ul class="list-disc pl-5">
+                            <li>Tout le monde veut des routes sûres et des hôpitaux</li>
+                            <li>Prêt à payer des impôts pour le bien commun</li>
+                            <li>Mène au bénéfice collectif</li>
+                            <li>Comme une équipe de foot voulant gagner le match</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h4 class="text-xl font-bold text-blue-700 mb-3">Simulation Interactive : La Volonté Générale en Action</h4>
+                <p class="mb-4">Ajustez le niveau de vertu civique pour voir comment il affecte l'émergence de la Volonté Générale.</p>
+                
+                <div class="slider-container">
+                    <label class="block mb-2 font-medium">Niveau de Vertu Civique : <span id="civicVirtueValue">50</span>%</label>
+                    <input type="range" id="civicVirtueSlider" min="0" max="100" value="50" class="w-full">
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="rousseauChart"></canvas>
+                </div>
+                
+                <div class="mt-4 p-4 bg-blue-50 rounded-lg">
+                    <h5 class="font-bold mb-2">Le Paradoxe de la Liberté :</h5>
+                    <p>"On le forcera d'être libre" - Pour Rousseau, la vraie liberté est l'autonomie (l'obéissance à la loi qu'on s'est prescrite), et non l'indépendance (faire tout ce que l'on veut).</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="compare">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-2xl font-bold text-blue-700 mb-4">Comparer les Systèmes Politiques</h3>
+                <p class="mb-4">Comparons maintenant directement le Léviathan de Hobbes avec le Contrat Social de Rousseau à travers plusieurs dimensions.</p>
+                
+                <div class="chart-container mb-6">
+                    <canvas id="comparisonChart"></canvas>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+                        <h4 class="text-xl font-bold text-red-700 mb-2">Le Léviathan de Hobbes</h4>
+                        <table class="w-full">
+                            <tr>
+                                <td class="font-medium">Nature Humaine :</td>
+                                <td>Naturellement violente</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">But Principal :</td>
+                                <td>Sécurité</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">Liberté :</td>
+                                <td>Sacrifiée pour la sécurité</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">Forme Politique :</td>
+                                <td>Souveraineté absolue</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">Rôle du Citoyen :</td>
+                                <td>Sujet obéissant</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                        <h4 class="text-xl font-bold text-green-700 mb-2">Le Contrat Social de Rousseau</h4>
+                        <table class="w-full">
+                            <tr>
+                                <td class="font-medium">Nature Humaine :</td>
+                                <td>Corrompue par la société</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">But Principal :</td>
+                                <td>Autonomie</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">Liberté :</td>
+                                <td>Préservée par l'auto-législation</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">Forme Politique :</td>
+                                <td>Démocratie directe</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">Rôle du Citoyen :</td>
+                                <td>Citoyen actif</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <h4 class="text-xl font-bold text-blue-700 mb-3">Simulation Interactive : Créez Votre Propre Société</h4>
+                <p class="mb-4">Vous pouvez maintenant expérimenter la création de votre propre société en ajustant les paramètres ci-dessous. Voyez comment différentes combinaisons affectent les résultats.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div class="slider-container">
+                        <label class="block mb-2 font-medium">Nature Humaine (Violent ↔ Pacifique) : <span id="humanNatureValue">50</span></label>
+                        <input type="range" id="humanNatureSlider" min="0" max="100" value="50" class="w-full">
+                    </div>
+                    
+                    <div class="slider-container">
+                        <label class="block mb-2 font-medium">Pouvoir du Gouv. (Faible ↔ Fort) : <span id="govPowerValue">50</span></label>
+                        <input type="range" id="govPowerSlider" min="0" max="100" value="50" class="w-full">
+                    </div>
+                    
+                    <div class="slider-container">
+                        <label class="block mb-2 font-medium">Participation Civique (Basse ↔ Haute) : <span id="civicParticipationValue">50</span></label>
+                        <input type="range" id="civicParticipationSlider" min="0" max="100" value="50" class="w-full">
+                    </div>
+                    
+                    <div class="slider-container">
+                        <label class="block mb-2 font-medium">Égalité Économique (Basse ↔ Haute) : <span id="equalityValue">50</span></label>
+                        <input type="range" id="equalitySlider" min="0" max="100" value="50" class="w-full">
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="societyOutcomesChart"></canvas>
+                </div>
+                
+                <div class="mt-4 p-4 bg-gray-100 rounded-lg">
+                    <h5 class="font-bold mb-2">Profil de Votre Société :</h5>
+                    <p id="societyProfile">Ajustez les paramètres pour voir le profil de votre société.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="crisis">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-2xl font-bold text-red-700 mb-4">Étude de Cas : Le Paradoxe de la Pandémie</h3>
+                <p class="mb-4">Un virus mortel se propage dans la société. Les citoyens sont divisés. L'économie est au point mort. Comment l'État doit-il réagir ? Ce scénario teste l'application pratique de la théorie politique.</p>
+                
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+                    <p class="font-bold">Le Défi :</p>
+                    <p>Équilibrer la sécurité publique (Hobbes) avec les droits individuels (Locke/Libéralisme) et le devoir collectif (Rousseau).</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div class="strategy-card bg-red-50 border border-red-200 p-4 rounded-lg" onclick="selectCrisisStrategy('hobbes')">
+                        <h4 class="font-bold text-red-800 text-lg mb-2">Option A : Le Léviathan</h4>
+                        <p class="text-sm mb-2 font-semibold">"Loi Martiale & Sécurité Absolue"</p>
+                        <ul class="text-sm list-disc pl-4 mb-3">
+                            <li>Couvre-feu strict & confinements</li>
+                            <li>Application militaire</li>
+                            <li>Dissidents arrêtés immédiatement</li>
+                        </ul>
+                        <p class="text-xs text-gray-500 italic">"La sécurité dépend de l'obéissance absolue."</p>
+                    </div>
+
+                    <div class="strategy-card bg-blue-50 border border-blue-200 p-4 rounded-lg" onclick="selectCrisisStrategy('locke')">
+                        <h4 class="font-bold text-blue-800 text-lg mb-2">Option B : L'Individu</h4>
+                        <p class="text-sm mb-2 font-semibold">"Liberté Individuelle & Choix"</p>
+                        <ul class="text-sm list-disc pl-4 mb-3">
+                            <li>Recommandations volontaires</li>
+                            <li>Pas de mandats vaccinaux</li>
+                            <li>L'économie reste ouverte</li>
+                        </ul>
+                        <p class="text-xs text-gray-500 italic">"Mes droits sont inaliénables."</p>
+                    </div>
+
+                    <div class="strategy-card bg-green-50 border border-green-200 p-4 rounded-lg" onclick="selectCrisisStrategy('rousseau')">
+                        <h4 class="font-bold text-green-800 text-lg mb-2">Option C : Volonté Générale</h4>
+                        <p class="text-sm mb-2 font-semibold">"Devoir Civique & Obligations"</p>
+                        <ul class="text-sm list-disc pl-4 mb-3">
+                            <li>Vote démocratique pour des lois strictes</li>
+                            <li>"Forcé d'être libre" (Vaccin obligatoire)</li>
+                            <li>Pression sociale sur les non-conformistes</li>
+                        </ul>
+                        <p class="text-xs text-gray-500 italic">"Obéissance à la loi qu'on s'est prescrite."</p>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="crisisChart"></canvas>
+                </div>
+
+                <div class="mt-4 p-4 bg-gray-100 rounded-lg border border-gray-300">
+                    <h5 class="font-bold mb-2">Analyse des Résultats :</h5>
+                    <p id="crisisResultText">Sélectionnez une stratégie ci-dessus pour voir les conséquences politiques.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Global variables to store chart instances
+        let natureChart, societyChart, hobbesChart, rousseauChart, comparisonChart, societyOutcomesChart, crisisChart;
+        
+        // Tab switching functionality
+        function switchTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Update tab button styles
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            tabButtons.forEach(btn => {
+                if (btn.getAttribute('data-tab') === tabName) {
+                    // Check if it's the Crisis tab to give it a red style, otherwise blue
+                    if (tabName === 'crisis') {
+                        btn.classList.add('text-red-600', 'border-b-2', 'border-red-600');
+                        btn.classList.remove('text-gray-500');
+                    } else {
+                        btn.classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
+                        btn.classList.remove('text-gray-500');
+                    }
+                } else {
+                    btn.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600', 'text-red-600', 'border-red-600');
+                    btn.classList.add('text-gray-500');
+                }
+            });
+            
+            // Initialize charts for the active tab
+            setTimeout(() => {
+                initializeChartsForTab(tabName);
+            }, 100);
+        }
+        
+        // Add event listeners to tab buttons
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabName = btn.getAttribute('data-tab');
+                switchTab(tabName);
+            });
+        });
+        
+        // Initialize charts for specific tabs
+        function initializeChartsForTab(tabName) {
+            try {
+                if (tabName === 'nature' && !natureChart) {
+                    initializeNatureChart();
+                } else if (tabName === 'society' && !societyChart) {
+                    initializeSocietyChart();
+                } else if (tabName === 'hobbes' && !hobbesChart) {
+                    initializeHobbesChart();
+                } else if (tabName === 'rousseau' && !rousseauChart) {
+                    initializeRousseauChart();
+                } else if (tabName === 'compare') {
+                    if (!comparisonChart) initializeComparisonChart();
+                    if (!societyOutcomesChart) initializeSocietyOutcomesChart();
+                } else if (tabName === 'crisis' && !crisisChart) {
+                    initializeCrisisChart();
+                }
+            } catch (error) {
+                console.error('Error initializing charts:', error);
+            }
+        }
+        
+        // --- CRISIS TAB LOGIC ---
+        function initializeCrisisChart() {
+            const ctx = document.getElementById('crisisChart').getContext('2d');
+            crisisChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Sécurité Publique (Survie)', 'Liberté Individuelle', 'Cohésion Sociale', 'Pouvoir Étatique'],
+                    datasets: [{
+                        label: 'Résultat Projeté',
+                        data: [0, 0, 0, 0],
+                        backgroundColor: [
+                            'rgba(239, 68, 68, 0.6)',  // Red for safety/power
+                            'rgba(59, 130, 246, 0.6)', // Blue for liberty
+                            'rgba(16, 185, 129, 0.6)', // Green for cohesion
+                            'rgba(75, 85, 99, 0.6)'    // Gray for State Power
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+
+        function selectCrisisStrategy(strategy) {
+            // Visual feedback for cards
+            document.querySelectorAll('.strategy-card').forEach(c => c.classList.remove('selected'));
+            
+            const resultBox = document.getElementById('crisisResultText');
+            
+            let data = [];
+            let text = "";
+
+            if (strategy === 'hobbes') {
+                // Safety high, Liberty low, Cohesion enforced (fear), Power max
+                data = [95, 5, 80, 100]; 
+                text = "<strong>Le Résultat Hobbesien :</strong> Le virus est contenu efficacement. Le taux de mortalité chute. Cependant, les citoyens vivent dans la peur de l'État. Il n'y a pas de dissidence, mais pas non plus de véritable vie civique. Vous avez échangé la liberté contre la survie. L'état d'urgence ne finit jamais.";
+            } else if (strategy === 'locke') {
+                // Safety low/med, Liberty Max, Cohesion low (polarized), Power low
+                data = [40, 95, 30, 20];
+                text = "<strong>Le Résultat Lockéen/Libertarien :</strong> Les citoyens jouissent d'une liberté maximale. Cependant, le virus se propage inégalement. Les hôpitaux peuvent être submergés. La société se polarise entre ceux qui prennent des précautions et ceux qui ne le font pas. L'État est faible mais respecte les droits.";
+            } else if (strategy === 'rousseau') {
+                // Safety High, Liberty Med (Moral liberty), Cohesion High (but coercive for minority), Power High (Democratic)
+                data = [85, 60, 90, 80];
+                text = "<strong>Le Résultat Rousseauiste :</strong> La communauté vote pour se protéger. Les mandats ne sont pas appliqués par un dictateur, mais par la 'Volonté Générale'. Ceux qui refusent sont punis, paradoxalement 'forcés d'être libres' (rationnels). Forte cohésion sociale parmi la majorité, mais tyrannie potentielle sur la minorité.";
+            }
+
+            // Update Chart
+            if (crisisChart) {
+                crisisChart.data.datasets[0].data = data;
+                crisisChart.update();
+            }
+            // Update Text
+            resultBox.innerHTML = text;
+        }
+
+        // --- EXISTING CHARTS ---
+        
+        // Nature tab chart
+        function initializeNatureChart() {
+            const ctx = document.getElementById('natureChart').getContext('2d');
+            natureChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Harmonie Sociale', 'Liberté Individuelle', 'Sécurité', 'Niveau de Violence', 'Coopération'],
+                    datasets: [
+                        {
+                            label: 'L\'État de Nature de Hobbes',
+                            data: [10, 80, 10, 90, 20],
+                            backgroundColor: 'rgba(239, 68, 68, 0.2)',
+                            borderColor: 'rgba(239, 68, 68, 1)',
+                            pointBackgroundColor: 'rgba(239, 68, 68, 1)',
+                        },
+                        {
+                            label: 'L\'État de Nature de Rousseau',
+                            data: [70, 90, 60, 20, 80],
+                            backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                            borderColor: 'rgba(16, 185, 129, 1)',
+                            pointBackgroundColor: 'rgba(16, 185, 129, 1)',
+                        }
+                    ]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Society tab chart
+        function initializeSocietyChart() {
+            const ctx = document.getElementById('societyChart').getContext('2d');
+            societyChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Isolement', 'Familles', 'Tribus', 'Villages', 'Villes', 'Cités'],
+                    datasets: [
+                        {
+                            label: 'Amour de Soi (Amour de soi naturel)',
+                            data: [80, 75, 65, 50, 30, 20],
+                            backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                            borderColor: 'rgba(16, 185, 129, 1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Amour-Propre (Comparaison sociale)',
+                            data: [10, 20, 40, 65, 85, 95],
+                            backgroundColor: 'rgba(239, 68, 68, 0.2)',
+                            borderColor: 'rgba(239, 68, 68, 1)',
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Hobbes tab chart
+        function initializeHobbesChart() {
+            const ctx = document.getElementById('hobbesChart').getContext('2d');
+            hobbesChart = new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: [
+                        {
+                            label: 'Compromis Sécurité vs Liberté',
+                            data: [
+                                {x: 10, y: 90},
+                                {x: 20, y: 80},
+                                {x: 30, y: 70},
+                                {x: 40, y: 60},
+                                {x: 50, y: 50},
+                                {x: 60, y: 40},
+                                {x: 70, y: 30},
+                                {x: 80, y: 20},
+                                {x: 90, y: 10}
+                            ],
+                            backgroundColor: 'rgba(59, 130, 246, 0.5)',
+                            borderColor: 'rgba(59, 130, 246, 1)',
+                            showLine: true,
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Pouvoir Souverain'
+                            },
+                            min: 0,
+                            max: 100
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Liberté Individuelle'
+                            },
+                            min: 0,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Rousseau tab chart
+        function initializeRousseauChart() {
+            const ctx = document.getElementById('rousseauChart').getContext('2d');
+            rousseauChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Faible Vertu Civique', 'Vertu Civique Moyenne', 'Haute Vertu Civique'],
+                    datasets: [
+                        {
+                            label: 'Volonté de Tous (Intérêts Égoïstes)',
+                            data: [85, 50, 15],
+                            backgroundColor: 'rgba(239, 68, 68, 0.7)',
+                        },
+                        {
+                            label: 'Volonté Générale (Bien Commun)',
+                            data: [15, 50, 85],
+                            backgroundColor: 'rgba(16, 185, 129, 0.7)',
+                        }
+                    ]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            stacked: true,
+                        },
+                        y: {
+                            stacked: true,
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Comparison tab chart
+        function initializeComparisonChart() {
+            const ctx = document.getElementById('comparisonChart').getContext('2d');
+            comparisonChart = new Chart(ctx, {
+                type: 'polarArea',
+                data: {
+                    labels: ['Sécurité', 'Liberté', 'Égalité', 'Fraternité', 'Stabilité'],
+                    datasets: [
+                        {
+                            label: 'Le Léviathan de Hobbes',
+                            data: [90, 20, 30, 40, 85],
+                            backgroundColor: [
+                                'rgba(239, 68, 68, 0.5)',
+                                'rgba(239, 68, 68, 0.5)',
+                                'rgba(239, 68, 68, 0.5)',
+                                'rgba(239, 68, 68, 0.5)',
+                                'rgba(239, 68, 68, 0.5)'
+                            ],
+                            borderColor: 'rgba(239, 68, 68, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Le Contrat Social de Rousseau',
+                            data: [70, 85, 80, 90, 60],
+                            backgroundColor: [
+                                'rgba(16, 185, 129, 0.5)',
+                                'rgba(16, 185, 129, 0.5)',
+                                'rgba(16, 185, 129, 0.5)',
+                                'rgba(16, 185, 129, 0.5)',
+                                'rgba(16, 185, 129, 0.5)'
+                            ],
+                            borderColor: 'rgba(16, 185, 129, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Society outcomes chart
+        function initializeSocietyOutcomesChart() {
+            const ctx = document.getElementById('societyOutcomesChart').getContext('2d');
+            societyOutcomesChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Sécurité', 'Liberté', 'Égalité', 'Prospérité', 'Bonheur'],
+                    datasets: [{
+                        label: 'Votre Société',
+                        data: [50, 50, 50, 50, 50],
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        pointBackgroundColor: 'rgba(59, 130, 246, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(59, 130, 246, 1)'
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Slider event listeners for Nature tab
+        if (document.getElementById('violenceSlider')) {
+            document.getElementById('violenceSlider').addEventListener('input', function() {
+                document.getElementById('violenceValue').textContent = this.value;
+                updateNatureResults();
+            });
+        }
+        
+        if (document.getElementById('pitySlider')) {
+            document.getElementById('pitySlider').addEventListener('input', function() {
+                document.getElementById('pityValue').textContent = this.value;
+                updateNatureResults();
+            });
+        }
+        
+        if (document.getElementById('selfPreservationSlider')) {
+            document.getElementById('selfPreservationSlider').addEventListener('input', function() {
+                document.getElementById('selfPreservationValue').textContent = this.value;
+                updateNatureResults();
+            });
+        }
+        
+        // Update nature results based on slider values
+        function updateNatureResults() {
+            try {
+                const violence = parseInt(document.getElementById('violenceSlider').value);
+                const pity = parseInt(document.getElementById('pitySlider').value);
+                
+                let resultText = '';
+                
+                if (violence > 70 && pity < 30) {
+                    resultText = 'Cette combinaison correspond à la vision de Hobbes de l\'état de nature : une violence élevée et une faible pitié mènent à une "guerre de tous contre tous". La vie serait "solitaire, indigente, dégoûtante, animale et brève".';
+                } else if (violence < 30 && pity > 70) {
+                    resultText = 'Cette combinaison correspond à la vision de Rousseau de l\'état de nature : une faible violence et une pitié élevée créent une existence pacifique où la pitié naturelle modère l\'amour de soi.';
+                } else if (violence > 50 && pity > 50) {
+                    resultText = 'Cela crée une tension intéressante : une violence élevée mais aussi une pitié élevée. Cela pourrait représenter un état où les conflits naturels existent mais sont modérés par l\'empathie, empêchant une guerre totale.';
+                } else {
+                    resultText = 'Cela représente un état de nature mixte où les humains ont à la fois des tendances violentes et pacifiques. L\'équilibre entre ces forces déterminerait les résultats sociaux.';
+                }
+                
+                document.getElementById('natureResults').textContent = resultText;
+                
+                // Update chart if it exists
+                if (natureChart) {
+                    // Update the chart data based on slider values
+                    const socialHarmony = Math.max(0, 100 - violence + (pity/2));
+                    const individualFreedom = Math.max(0, 100 - violence);
+                    const security = Math.max(0, (100 - violence) * (pity/100));
+                    const violenceLevel = violence;
+                    const cooperation = pity;
+                    
+                    natureChart.data.datasets[0].data = [
+                        Math.max(0, 100 - violence),
+                        Math.max(0, 100 - violence),
+                        Math.max(0, 100 - violence),
+                        violence,
+                        Math.max(0, pity)
+                    ];
+                    
+                    natureChart.data.datasets[1].data = [
+                        socialHarmony,
+                        individualFreedom,
+                        security,
+                        violenceLevel,
+                        cooperation
+                    ];
+                    
+                    natureChart.update();
+                }
+            } catch (error) {
+                console.error('Error updating nature results:', error);
+            }
+        }
+        
+        // Slider event listener for Society tab
+        if (document.getElementById('societyComplexitySlider')) {
+            document.getElementById('societyComplexitySlider').addEventListener('input', function() {
+                document.getElementById('societyComplexityValue').textContent = this.value;
+                updateSocietyResults();
+            });
+        }
+        
+        // Update society results based on slider value
+        function updateSocietyResults() {
+            try {
+                const complexity = parseInt(document.getElementById('societyComplexitySlider').value);
+                
+                // Update chart if it exists
+                if (societyChart) {
+                    const amourDeSoi = Math.max(0, 80 - (complexity * 0.6));
+                    const amourPropre = Math.min(95, 10 + (complexity * 0.85));
+                    
+                    societyChart.data.datasets[0].data = [
+                        amourDeSoi,
+                        Math.max(0, amourDeSoi - 5),
+                        Math.max(0, amourDeSoi - 15),
+                        Math.max(0, amourDeSoi - 30),
+                        Math.max(0, amourDeSoi - 50),
+                        Math.max(0, amourDeSoi - 60)
+                    ];
+                    
+                    societyChart.data.datasets[1].data = [
+                        amourPropre,
+                        Math.min(95, amourPropre + 10),
+                        Math.min(95, amourPropre + 30),
+                        Math.min(95, amourPropre + 55),
+                        Math.min(95, amourPropre + 75),
+                        Math.min(95, amourPropre + 85)
+                    ];
+                    
+                    societyChart.update();
+                }
+            } catch (error) {
+                console.error('Error updating society results:', error);
+            }
+        }
+        
+        // Slider event listener for Hobbes tab
+        if (document.getElementById('sovereignPowerSlider')) {
+            document.getElementById('sovereignPowerSlider').addEventListener('input', function() {
+                document.getElementById('sovereignPowerValue').textContent = this.value;
+                updateHobbesResults();
+            });
+        }
+        
+        // Update Hobbes results based on slider value
+        function updateHobbesResults() {
+            try {
+                const power = parseInt(document.getElementById('sovereignPowerSlider').value);
+                
+                // Update chart if it exists
+                if (hobbesChart) {
+                    // Update the data points
+                    const newData = [];
+                    for (let i = 0; i <= 100; i += 10) {
+                        newData.push({
+                            x: i,
+                            y: Math.max(0, 100 - i)
+                        });
+                    }
+                    
+                    hobbesChart.data.datasets[0].data = newData;
+                    hobbesChart.update();
+                }
+            } catch (error) {
+                console.error('Error updating Hobbes results:', error);
+            }
+        }
+        
+        // Slider event listener for Rousseau tab
+        if (document.getElementById('civicVirtueSlider')) {
+            document.getElementById('civicVirtueSlider').addEventListener('input', function() {
+                document.getElementById('civicVirtueValue').textContent = this.value;
+                updateRousseauResults();
+            });
+        }
+        
+        // Update Rousseau results based on slider value
+        function updateRousseauResults() {
+            try {
+                const civicVirtue = parseInt(document.getElementById('civicVirtueSlider').value);
+                
+                // Update chart if it exists
+                if (rousseauChart) {
+                    const willOfAll = Math.max(15, 100 - civicVirtue);
+                    const generalWill = Math.min(85, civicVirtue);
+                    
+                    rousseauChart.data.datasets[0].data = [
+                        willOfAll,
+                        Math.max(40, willOfAll - 35),
+                        Math.max(15, willOfAll - 70)
+                    ];
+                    
+                    rousseauChart.data.datasets[1].data = [
+                        generalWill,
+                        Math.min(90, generalWill + 40),
+                        Math.min(95, generalWill + 70)
+                    ];
+                    
+                    rousseauChart.update();
+                }
+            } catch (error) {
+                console.error('Error updating Rousseau results:', error);
+            }
+        }
+        
+        // Slider event listeners for Compare tab
+        if (document.getElementById('humanNatureSlider')) {
+            document.getElementById('humanNatureSlider').addEventListener('input', function() {
+                document.getElementById('humanNatureValue').textContent = this.value;
+                updateSocietyOutcomes();
+            });
+        }
+        
+        if (document.getElementById('govPowerSlider')) {
+            document.getElementById('govPowerSlider').addEventListener('input', function() {
+                document.getElementById('govPowerValue').textContent = this.value;
+                updateSocietyOutcomes();
+            });
+        }
+        
+        if (document.getElementById('civicParticipationSlider')) {
+            document.getElementById('civicParticipationSlider').addEventListener('input', function() {
+                document.getElementById('civicParticipationValue').textContent = this.value;
+                updateSocietyOutcomes();
+            });
+        }
+        
+        if (document.getElementById('equalitySlider')) {
+            document.getElementById('equalitySlider').addEventListener('input', function() {
+                document.getElementById('equalityValue').textContent = this.value;
+                updateSocietyOutcomes();
+            });
+        }
+        
+        // Update society outcomes based on slider values
+        function updateSocietyOutcomes() {
+            try {
+                const humanNature = parseInt(document.getElementById('humanNatureSlider').value);
+                const govPower = parseInt(document.getElementById('govPowerSlider').value);
+                const civicParticipation = parseInt(document.getElementById('civicParticipationSlider').value);
+                const equality = parseInt(document.getElementById('equalitySlider').value);
+                
+                // Calculate outcomes based on parameters
+                const security = Math.min(100, govPower + (100 - humanNature)/2);
+                const freedom = Math.min(100, (100 - govPower) + civicParticipation/2);
+                const equalityVal = equality;
+                const prosperity = Math.min(100, (equality + civicParticipation + (100 - humanNature)/3));
+                const happiness = Math.min(100, (freedom + security + equality + prosperity)/4);
+                
+                // Update chart if it exists
+                if (societyOutcomesChart) {
+                    societyOutcomesChart.data.datasets[0].data = [
+                        security,
+                        freedom,
+                        equalityVal,
+                        prosperity,
+                        happiness
+                    ];
+                    
+                    societyOutcomesChart.update();
+                }
+                
+                // Update society profile text
+                let profileText = 'Votre société a ';
+                
+                if (humanNature < 30) {
+                    profileText += 'des citoyens naturellement pacifiques';
+                } else if (humanNature > 70) {
+                    profileText += 'des citoyens naturellement compétitifs';
+                } else {
+                    profileText += 'des citoyens aux tendances naturelles mixtes';
+                }
+                
+                profileText += ', ';
+                
+                if (govPower < 30) {
+                    profileText += 'un gouvernement faible';
+                } else if (govPower > 70) {
+                    profileText += 'un gouvernement fort';
+                } else {
+                    profileText += 'un gouvernement modérément puissant';
+                }
+                
+                profileText += ', ';
+                
+                if (civicParticipation < 30) {
+                    profileText += 'une faible participation civique';
+                } else if (civicParticipation > 70) {
+                    profileText += 'une forte participation civique';
+                } else {
+                    profileText += 'une participation civique modérée';
+                }
+                
+                profileText += ', et ';
+                
+                if (equality < 30) {
+                    profileText += 'une forte inégalité';
+                } else if (equality > 70) {
+                    profileText += 'une forte égalité';
+                } else {
+                    profileText += 'une égalité modérée';
+                }
+                
+                profileText += '. Cela résulte en ';
+                
+                // Determine the best and worst aspects
+                const outcomes = [
+                    {name: 'sécurité', value: security},
+                    {name: 'liberté', value: freedom},
+                    {name: 'égalité', value: equalityVal},
+                    {name: 'prospérité', value: prosperity},
+                    {name: 'bonheur', value: happiness}
+                ];
+                
+                outcomes.sort((a, b) => b.value - a.value);
+                
+                profileText += `une haute ${outcomes[0].name} (${Math.round(outcomes[0].value)}%) mais une faible ${outcomes[4].name} (${Math.round(outcomes[4].value)}%).`;
+                
+                document.getElementById('societyProfile').textContent = profileText;
+                
+            } catch (error) {
+                console.error('Error updating society outcomes:', error);
+            }
+        }
+        
+        // Initialize the first tab
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                // Set up initial state
+                updateNatureResults();
+                updateSocietyResults();
+                updateHobbesResults();
+                updateRousseauResults();
+                updateSocietyOutcomes();
+            } catch (error) {
+                console.error('Error during initialization:', error);
+            }
+        });
+    </script>
+</body>
+</html>
+```
